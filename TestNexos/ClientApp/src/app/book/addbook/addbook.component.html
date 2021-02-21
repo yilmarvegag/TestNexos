@@ -1,8 +1,8 @@
 <h1>{{titlePage}}</h1>
 <h3>Books</h3>
 <hr />
-<div *ngIf="message">
-  <p class="alert alert-danger">{{ message }}</p>
+<div *ngIf="errorMessage">
+  <p class="alert alert-danger">{{ errorMessage }}</p>
 </div>
 <br />
 <form [formGroup]="bookForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
@@ -20,7 +20,7 @@
     <div class="col">
       <div class="form-group">
         <label for="year">Year <span>*</span></label>
-        <input type="text" class="form-control" formControlName="year">
+        <input type="number" class="form-control" formControlName="year">
         <span class="alert alert-danger" *ngIf="year.invalid && formDir.submitted">Please Enter year</span>
       </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="col">
       <div class="form-group">
         <label for="numberOfPages">Number Of Pages <span>*</span></label>
-        <input type="text" class="form-control" formControlName="numberOfPages">
+        <input type="number" class="form-control" formControlName="numberOfPages">
         <span class="alert alert-danger" *ngIf="numberOfPages.invalid && formDir.submitted">Please enter Number Of Pages</span>
       </div>
     </div>

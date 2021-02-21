@@ -34,7 +34,7 @@ namespace testnexos.Controllers
         {
             if (BookMaximunRegister(book.PublisherId))
             {
-                return new JsonResult(new { message = "It is not possible to register the book, the maximum allowed has been reached." });
+                throw new Exception("It is not possible to register the book, the maximum allowed has been reached.");
             }
 
             try

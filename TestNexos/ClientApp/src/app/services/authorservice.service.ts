@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { map, catchError, retry } from "rxjs/operators";
 import { Author } from '../models/Author';
 
 
@@ -16,53 +16,38 @@ export class AuthorService {
 
   get() {
     return this._http.get<Author[]>(this.myAppUrl + 'api/Authors/Index').pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.error(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   getById(id: number) {
     //console.log(id);
     return this._http.get(this.myAppUrl + "api/Authors/FindById/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   save(publisher) {
     return this._http.post(this.myAppUrl + 'api/Authors/Create', publisher).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   update(id: number, author) {
     return this._http.put<Author>(this.myAppUrl + 'api/Authors/Edit/' + id, author).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
-    );;
+      retry(1),
+      catchError(this.errorHandler)
+    );
   }
 
-  delete(id): Observable<Author> {
+  delete(id) {
     return this._http.delete(this.myAppUrl + "api/Authors/Delete/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
-    );;
+      retry(1),
+      catchError(this.errorHandler)
+    );
   }
 
   errorHandler(error) {

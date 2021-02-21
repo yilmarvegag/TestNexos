@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { map, catchError, retry } from "rxjs/operators";
 import { Book } from '../models/Book';
 
 
@@ -31,41 +31,29 @@ export class BookService {
   getBookById(id: number) {
     //console.log(id);
     return this._http.get(this.myAppUrl + "api/Book/FindById/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   saveBook(book) {
     return this._http.post(this.myAppUrl + 'api/Book/Create', book).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   updateBook(id: number, book) {
     return this._http.put<Book>(this.myAppUrl + 'api/Book/Edit/' + id, JSON.stringify(book), this.httpOptions).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );;
   }
 
   deleteBook(id) {
     return this._http.delete(this.myAppUrl + "api/Book/Delete/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );;
   }
 
@@ -76,9 +64,11 @@ export class BookService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      //errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `${error.error}`;
     }
     console.log(errorMessage);
+    console.log(error);
     return throwError(errorMessage);
   }
 }

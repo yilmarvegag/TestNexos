@@ -43,6 +43,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\node_modules\**" />
+    <TypeScriptCompile Remove="node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { map, catchError, retry } from "rxjs/operators";
 import { Publisher } from '../models/Publisher';
 
 
@@ -16,53 +16,37 @@ export class PublisherService {
 
   get() {
     return this._http.get<Publisher>(this.myAppUrl + 'api/Publishers/Index').pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.error(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   getById(id: number) {
-    //console.log(id);
     return this._http.get(this.myAppUrl + "api/Publishers/FindById/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   save(publisher) {
     return this._http.post(this.myAppUrl + 'api/Publishers/Create', publisher).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   update(id: number, publisher) {
     return this._http.put<Publisher>(this.myAppUrl + 'api/Publishers/Edit/' + id, publisher).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
+      retry(1),
+      catchError(this.errorHandler)
     );;
   }
 
-  delete(id): Observable<Publisher> {
+  delete(id){
     return this._http.delete(this.myAppUrl + "api/Publishers/Delete/" + id).pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.log(error);
-        return of(result as T);
-      })
-    );;
+      retry(1),
+      catchError(this.errorHandler)
+    );
   }
 
   errorHandler(error) {

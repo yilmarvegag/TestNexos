@@ -16,7 +16,6 @@ export class createbook implements OnInit {
   titlePage: string = "Create";
   bookId: number;
   errorMessage: any;
-  message: string;
   authorList: Array<any> = [];
   publisherList: Array<any> = [];
 
@@ -62,7 +61,7 @@ export class createbook implements OnInit {
     if (this.titlePage == "Create") {
       this._bookService.saveBook(this.bookForm.value)
         .subscribe((data) => {
-          this.message = data.message;
+          
           this._router.navigate(['/register-book']);
         }, error => this.errorMessage = error)
     }
