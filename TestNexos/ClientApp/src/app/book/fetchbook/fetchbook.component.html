@@ -1,0 +1,40 @@
+<h1>Book Data</h1>
+
+<p>This component demonstrates fetching Book data from the server.</p>
+
+<p *ngIf="!bookPosts$"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/register-book']">Create New</a>
+</p>
+
+<table class='table' *ngIf="(bookPosts$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Year</th>
+      <th>Title</th>
+      <th>Gender</th>
+      <th>Numberofpages</th>
+      <th>Publisher</th>
+      <th>Author</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of (bookPosts$ | async)">
+      <td>{{ book.id }}</td>
+      <td>{{ book.year }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.gender }}</td>
+      <td>{{ book.numberOfPages }}</td>
+      <td>{{ book.publisher.name }}</td>
+      <td>{{ book.author.fullName }}</td>
+      <td>{{ book.createdAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td>{{ book.updatedAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td><a [routerLink]="['/book/edit/', book.id]">Edit</a> |<a [routerLink]="" (click)="delete(book.id)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

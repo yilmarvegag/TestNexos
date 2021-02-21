@@ -1,0 +1,86 @@
+<h1>{{titlePage}}</h1>
+<h3>Books</h3>
+<hr />
+<div *ngIf="message">
+  <p class="alert alert-danger">{{ message }}</p>
+</div>
+<br />
+<form [formGroup]="bookForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <!--<form [formGroup]="bookForm" #bookForm="ngForm" (ngSubmit)="save()" novalidate>-->
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="title">Title <span>*</span></label>
+        <input type="text" class="form-control" formControlName="title">
+        <span class="alert alert-danger" *ngIf="title.invalid && formDir.submitted">Please enter title.</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group">
+        <label for="year">Year <span>*</span></label>
+        <input type="text" class="form-control" formControlName="year">
+        <span class="alert alert-danger" *ngIf="year.invalid && formDir.submitted">Please Enter year</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="gender">Gender <span>*</span></label>
+        <input type="text" class="form-control" formControlName="gender">
+        <span class="alert alert-danger" *ngIf="gender.invalid && formDir.submitted">Please enter Author Name</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="numberOfPages">Number Of Pages <span>*</span></label>
+        <input type="text" class="form-control" formControlName="numberOfPages">
+        <span class="alert alert-danger" *ngIf="numberOfPages.invalid && formDir.submitted">Please enter Number Of Pages</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="publisherId">Publisher Id <span>*</span></label>
+        <select class="form-control" data-val="true" formControlName="publisherId">
+          <option value="">--Select Publisher--</option>
+          <option *ngFor="let publisher of publisherList" value={{publisher.id}}>
+            {{publisher.name}}
+          </option>
+        </select>
+        <span class="alert alert-danger" *ngIf="publisherId.invalid && formDir.submitted">Please Enter Publisher</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="authorId">Author Id <span>*</span></label>
+        <select class="form-control" data-val="true" formControlName="authorId">
+          <option value="">--Select Author--</option>
+          <option *ngFor="let author of authorList" value={{author.id}}>
+            {{author.fullName}}
+          </option>
+        </select>
+        <span class="alert alert-danger" *ngIf="authorId.invalid && formDir.submitted">Please Enter authorId</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <button class="btn btn-info" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">Save</button>
+      </div>
+    </div>
+  </div>
+
+</form>

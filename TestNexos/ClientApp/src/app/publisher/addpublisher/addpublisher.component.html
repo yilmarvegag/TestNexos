@@ -1,0 +1,64 @@
+<h1>{{titlePage}}</h1>
+<h3>Publisher</h3>
+<hr />
+
+<form [formGroup]="publisherForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="name">Name <span>*</span></label>
+        <input type="text" class="form-control" formControlName="name">
+        <span class="alert alert-danger" *ngIf="name.invalid && formDir.submitted">Please enter name.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="correspondenceAddress">Correspondence Address <span>*</span></label>
+        <input type="text" class="form-control" formControlName="correspondenceAddress">
+        <span class="alert alert-danger" *ngIf="correspondenceAddress.invalid && formDir.submitted">Please enter Correspondence Address</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="telephone">Telephone <span>*</span></label>
+        <input type="text" class="form-control" formControlName="telephone">
+        <span class="alert alert-danger" *ngIf="telephone.invalid && formDir.submitted">Please enter number Telephone</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="email">Email <span>*</span></label>
+        <input type="email" class="form-control" formControlName="email">
+        <span class="alert alert-danger" *ngIf="email.invalid && formDir.submitted">Please Enter Email</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="maximumBooksRegistered">Maximum Books Registered <span>*</span></label>
+        <input type="number" class="form-control" formControlName="maximumBooksRegistered">
+        <span class="alert alert-danger" *ngIf="maximumBooksRegistered.invalid && formDir.submitted">Please Enter Maximum Books Registered</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <button class="btn btn-info" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group"><button type="submit" class="btn btn-success btn-block">Save</button>
+      </div>
+    </div>
+  </div>
+  
+</form>
+

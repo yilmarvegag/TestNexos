@@ -1,0 +1,37 @@
+<h1>Authors Data</h1>
+
+<p>This component demonstrates fetching authors data from the server.</p>
+
+<p *ngIf="!authorPosts$"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/register-author']">Create New</a>
+</p>
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(authorPosts$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>FullName</th>
+      <th>DateOfBirth</th>
+      <th>cityOfOrigin</th>
+      <th>Email</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let author of (authorPosts$ | async)">
+      <td>{{ author.id }}</td>
+      <td>{{ author.fullName }}</td>
+      <td>{{ author.dateOfBirth }}</td>
+      <td>{{ author.cityOfOrigin }}</td>
+      <td>{{ author.email }}</td>
+      <td>{{ author.createdAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td>{{ author.updatedAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td><a [routerLink]="['/author/edit/', author.id]">Edit</a> |<a [routerLink]="" (click)="delete(author.id)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

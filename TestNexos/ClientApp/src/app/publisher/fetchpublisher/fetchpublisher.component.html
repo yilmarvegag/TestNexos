@@ -1,0 +1,39 @@
+<h1>Publisher Data</h1>
+
+<p>This component demonstrates fetching Publisher data from the server.</p>
+
+<p *ngIf="!publisherPosts$"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/register-publisher']">Create New</a>
+</p>
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(publisherPosts$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Maximum Books</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let publisher of (publisherPosts$ | async)">
+      <td>{{ publisher.id }}</td>
+      <td>{{ publisher.name }}</td>
+      <td>{{ publisher.correspondenceAddress }}</td>
+      <td>{{ publisher.telephone }}</td>
+      <td>{{ publisher.email }}</td>
+      <td>{{ publisher.maximumBooksRegistered }}</td>
+      <td>{{ publisher.createdAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td>{{ publisher.updatedAt | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td><a [routerLink]="['/publisher/edit/', publisher.id]">Edit</a> | <a [routerLink]="" (click)="delete(publisher.id)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.deps.json
+C:\Users\User\Desktop\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+C:\Users\User\Desktop\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Users\User\Desktop\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfo.cs
+C:\Users\User\Desktop\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.dll
+C:\Users\User\Desktop\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Users\User\Desktop\testnexos\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.deps.json
+C:\Users\User\Desktop\testnexos\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+C:\Users\User\Desktop\testnexos\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfo.cs
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.dll
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Users\User\Desktop\testnexos\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csprojAssemblyReference.cache
