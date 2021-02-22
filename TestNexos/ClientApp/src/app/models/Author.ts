@@ -1,7 +1,7 @@
 export class Author {
   id: number;
   fullName: string;
-  dateOfBirth: number;
-  cityOfOrigin: number;
+  dateOfBirth: string;
+  cityOfOrigin: string;
   email: string;
 }

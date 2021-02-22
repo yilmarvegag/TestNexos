@@ -7,7 +7,14 @@
 <p>
   <a [routerLink]="['/register-author']">Create New</a>
 </p>
-
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label for="title">Search Author title or year</label>
+      <input matInput (keyup)="search($event)" placeholder="Enter Author, Year or Title to look for" class="form-control">
+    </div>
+  </div>
+</div>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(authorPosts$ | async)?.length>0">
   <thead>

@@ -7,6 +7,14 @@
 <p>
   <a [routerLink]="['/register-publisher']">Create New</a>
 </p>
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label for="title">Search Name, Address or Email</label>
+      <input matInput (keyup)="search($event)" placeholder="Enter Name, Address or Email to look for" class="form-control">
+    </div>
+  </div>
+</div>
 
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(publisherPosts$ | async)?.length>0">

@@ -1,8 +1,8 @@
 export class Publisher {
   id: number;
   name: string;
-  correspondenceAddress: number;
-  telephone: number;
+  correspondenceAddress: string;
+  telephone: string;
   email: string;
   maximumBooksRegistered: string;
 }

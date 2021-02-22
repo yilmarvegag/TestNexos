@@ -4,6 +4,7 @@ import { AuthorService } from '../../services/authorservice.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Author } from '../../models/Author';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-fetch-author',
@@ -25,6 +26,17 @@ export class FetchAuthorComponent {
 
   loadAuthorPosts() {
     this.authorPosts$ = this._authorService.get();
+  }
+
+  search(event: Event) {
+    const keyWord = (event.target as HTMLInputElement).value;
+    if (keyWord.length === 0) {
+      this.loadAuthorPosts()
+    } else {
+      this.authorPosts$ = this._authorService.get().pipe(
+        map(items => items.filter(item => item.fullName === keyWord || item.cityOfOrigin === keyWord || item.email === keyWord))
+      );
+    }
   }
 
   delete(authorID) {
