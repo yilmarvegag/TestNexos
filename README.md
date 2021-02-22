@@ -42,7 +42,7 @@ Proyecto 2:
 > Se requiere un frontend en Angular para buscar los libros registrados en el sistema.
 > El sistema debe permitir buscar por palabras clave como el autor, titulo, año.
 > Aspectos Técnicos:
-o Usar Angular 6 o mayor versión.
+> > Usar Angular 6 o mayor versión.
 o Usar componentes, servicios, observadores, bootstrap (o cualquier librería UI).
 o Una buena organización y estructura del proyecto serán tomadas en cuenta.
 o Una buena maquetación de templates serán tomadas en cuenta.
