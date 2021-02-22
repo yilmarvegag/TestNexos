@@ -59,7 +59,7 @@ export class createbook implements OnInit {
     if (this.titlePage == "Create") {
       this._bookService.saveBook(this.bookForm.value)
         .subscribe((data) => {
-          this._router.navigate(['/register-book']);
+          this._router.navigate(['/fetch-book']);
         }, error => this.errorMessage = error)
     }
     else if (this.titlePage == "Edit") {
