@@ -43,7 +43,7 @@ Proyecto 2:
 > El sistema debe permitir buscar por palabras clave como el autor, titulo, año.
 > Aspectos Técnicos:
 > > Usar Angular 6 o mayor versión.
-> > Usar componentes, servicios, observadores, bootstrap (o cualquier librería UI).
+> > Usar componentes, servicios, observadores, bootstrap (o cualquier librería UI). <br>
 > > Una buena organización y estructura del proyecto serán tomadas en cuenta.
 > > Una buena maquetación de templates serán tomadas en cuenta.
 
