@@ -22,28 +22,28 @@ Reglas de negocio:
 > Si al intentar registrar un libro se supera el máximo permitido, debe generarse una excepción y responder con el mensaje: “No es posible registrar el libro, se alcanzó el máximo permitido.”.
 
 > Si al intentar registrar un libro y no existe:
-o Autor: Responder con el mensaje: “El autor no está registrado”.
-o Editorial: Responder con el mensaje: “La editorial no está registrada”.
+> > Autor: Responder con el mensaje: “El autor no está registrado”.
+> > Editorial: Responder con el mensaje: “La editorial no está registrada”.
 
 Aspectos Técnicos:
 > Tener en cuenta la estructura de paquetes
-o Entidades.
-o DTOs.
-o Interfaces.
-o Servicios (implementación).
-o Controladores.
-o Excepciones.
+> > Entidades.
+> > DTOs.
+> > Interfaces.
+> > Servicios (implementación).
+> > Controladores.
+> > Excepciones.
 
 > Inyección de dependencias, uso de modelos, código legible son aspectos que serán tomados en cuenta.
 > Todas las buenas prácticas de desarrollo serán tomadas en cuenta.
-Prueba de Conocimiento Desarrollador .Net
+> Prueba de Conocimiento Desarrollador .Net
 
 Proyecto 2:
 > Se requiere un frontend en Angular para buscar los libros registrados en el sistema.
 > El sistema debe permitir buscar por palabras clave como el autor, titulo, año.
 > Aspectos Técnicos:
 > > Usar Angular 6 o mayor versión.
-o Usar componentes, servicios, observadores, bootstrap (o cualquier librería UI).
-o Una buena organización y estructura del proyecto serán tomadas en cuenta.
-o Una buena maquetación de templates serán tomadas en cuenta.
+> > Usar componentes, servicios, observadores, bootstrap (o cualquier librería UI).
+> > Una buena organización y estructura del proyecto serán tomadas en cuenta.
+> > Una buena maquetación de templates serán tomadas en cuenta.
 
