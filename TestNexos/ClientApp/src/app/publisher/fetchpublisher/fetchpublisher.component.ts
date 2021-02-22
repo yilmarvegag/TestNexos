@@ -10,7 +10,7 @@ import { Publisher } from '../../models/Publisher';
   templateUrl: './fetchpublisher.component.html'
 })
 export class FetchPublisherComponent {
-  publisherPosts$: Observable<Publisher>;
+  publisherPosts$: Observable<Publisher[]>;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private _publisherService: PublisherService, private _router: Router) {
   }

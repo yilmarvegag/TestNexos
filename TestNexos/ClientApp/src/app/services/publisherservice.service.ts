@@ -15,7 +15,7 @@ export class PublisherService {
   }
 
   get() {
-    return this._http.get<Publisher>(this.myAppUrl + 'api/Publishers/Index').pipe(
+    return this._http.get<Publisher[]>(this.myAppUrl + 'api/Publishers/Index').pipe(
       retry(1),
       catchError(this.errorHandler)
     );

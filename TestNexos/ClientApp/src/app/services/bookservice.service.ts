@@ -8,28 +8,19 @@ import { Book } from '../models/Book';
 @Injectable()
 export class BookService {
   myAppUrl: string = "";
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-    })
-  };
 
   constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.myAppUrl = baseUrl;
   }
 
   get() {
-    return this._http.get<Book>(this.myAppUrl + 'api/Book/Index').pipe(
-      map((res: any) => res),
-      catchError(<T>(error: any, result?: T) => {
-        console.error(error);
-        return of(result as T);
-      })
+    return this._http.get<Book[]>(this.myAppUrl + 'api/Book/Index').pipe(
+      retry(1),
+      catchError(this.errorHandler)
     );
   }
 
   getBookById(id: number) {
-    //console.log(id);
     return this._http.get(this.myAppUrl + "api/Book/FindById/" + id).pipe(
       retry(1),
       catchError(this.errorHandler)
@@ -44,7 +35,7 @@ export class BookService {
   }
 
   updateBook(id: number, book) {
-    return this._http.put<Book>(this.myAppUrl + 'api/Book/Edit/' + id, JSON.stringify(book), this.httpOptions).pipe(
+    return this._http.put<Book>(this.myAppUrl + 'api/Book/Edit/' + id, book).pipe(
       retry(1),
       catchError(this.errorHandler)
     );;

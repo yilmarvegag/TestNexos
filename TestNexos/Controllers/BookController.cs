@@ -30,7 +30,7 @@ namespace testnexos.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(Book book)
+        public async Task<Book> Create(Book book)
         {
             if (BookMaximunRegister(book.PublisherId))
             {
@@ -42,11 +42,11 @@ namespace testnexos.Controllers
                 book.CreatedAt = DateTime.UtcNow;
                 _repo.Add(book);
                 var save = await _repo.SaveAsync(book);
-                return new JsonResult(new { message = "Registered" });
+                return book;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new JsonResult(new { message = ex.Message });
+                throw;
             }
         }
 
